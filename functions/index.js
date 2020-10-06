@@ -1,6 +1,10 @@
+const _ = require("./env");
 const admin = require("firebase-admin");
 const functions = require("firebase-functions");
 const createUser = require("./create-user");
+const serviceAccount = require("./service-account.json");
+
+const requestOneTimePassword = require("./request_one_time_password");
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
@@ -10,12 +14,15 @@ const createUser = require("./create-user");
 //   response.send("Hello from Firebase!");
 // });
 
-var serviceAccount = require("./service-account.json");
-
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://one-time-password-8f741.firebaseio.com",
+  databaseURL: process.env.DATABASE_URL,
 });
+
 exports.createUser = functions
-  .region("europe-west1")
+  .region("europe-west3")
   .https.onRequest(createUser);
+
+exports.requestOneTimePassword = functions
+  .region("europe-west3")
+  .https.onRequest(requestOneTimePassword);
