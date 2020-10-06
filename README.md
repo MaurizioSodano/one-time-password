@@ -11,3 +11,6 @@ Firebase Cloud Functions to create get a code from a registerd phone number.
 TWILLIO_SID=xxxx
 TWILLIO_TOKEN=xxx
 TWILLIO_NUMBER=xxx`
+
+
+4. deploy with `firebase deploy --project xxx`

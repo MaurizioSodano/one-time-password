@@ -5,7 +5,7 @@ const createUser = require("./create-user");
 const serviceAccount = require("./service-account.json");
 
 const requestOneTimePassword = require("./request_one_time_password");
-
+const verifytOneTimePassword = require("./verify-one-time-password");
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
 //
@@ -26,3 +26,7 @@ exports.createUser = functions
 exports.requestOneTimePassword = functions
   .region("europe-west3")
   .https.onRequest(requestOneTimePassword);
+
+exports.verifytOneTimePassword = functions
+  .region("europe-west3")
+  .https.onRequest(verifytOneTimePassword);
